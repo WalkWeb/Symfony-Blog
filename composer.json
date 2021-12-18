@@ -46,6 +46,12 @@
     },
     "require-dev": {
         "codeception/codeception": "^4.1",
+        "codeception/module-asserts": "^2.0",
+        "codeception/module-cli": "^2.0",
+        "codeception/module-db": "^2.0",
+        "codeception/module-doctrine2": "^2.0",
+        "codeception/module-symfony": "^2.1",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.4.*",
         "symfony/css-selector": "5.4.*",
