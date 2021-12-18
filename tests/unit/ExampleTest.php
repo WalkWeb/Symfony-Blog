@@ -1,16 +1,9 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\unit;
 
-use Codeception\Test\Unit;
-
-class ExampleTest extends Unit
+class ExampleTest extends AbstractUnitTest
 {
-    /**
-     * @var UnitTester
-     */
-    protected $tester;
-
     public function testSomeFeature(): void
     {
         self::assertEquals(1, 1);
