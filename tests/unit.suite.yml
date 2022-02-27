@@ -16,5 +16,5 @@ modules:
                 password: '%DB_PASSWORD%'
                 populate: true
                 cleanup: false
-                populator: '' #TODO
-error_level: "E_ERROR"
+                populator: 'php bin/console doctrine:schema:drop --full-database --force --env=test && php bin/console doctrine:migrations:migrate --no-interaction --env=test'
+error_level: "E_NOTICE"
