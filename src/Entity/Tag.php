@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Entity\Traits\CreatedAtTrait;
 use App\Entity\Traits\IdTrait;
 use App\Repository\TagRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +36,11 @@ class Tag
      */
     private $approved = false;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Post::class, inversedBy="tags")
+     */
+    private $posts;
+
     // TODO icon
 
     // TODO translate
@@ -41,6 +48,7 @@ class Tag
     public function __construct(string $name)
     {
         $this->name = $name;
+        $this->posts = new ArrayCollection();
     }
 
     /**
@@ -62,5 +70,37 @@ class Tag
     public function approved(): void
     {
         $this->approved = true;
+    }
+
+    /**
+     * @return Collection|Post[]
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    /**
+     * @param Post $post
+     * @return $this
+     */
+    public function addPost(Post $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Post $post
+     * @return $this
+     */
+    public function removePost(Post $post): self
+    {
+        $this->posts->removeElement($post);
+
+        return $this;
     }
 }

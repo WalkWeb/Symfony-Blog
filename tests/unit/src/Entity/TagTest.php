@@ -29,6 +29,7 @@ class TagTest extends AbstractUnitTest
         foreach ($tags as $tag) {
             self::assertFalse($tag->isApproved());
             self::assertEquals($name, $tag->getName());
+            self::assertCount(0, $tag->getPosts());
         }
     }
 
