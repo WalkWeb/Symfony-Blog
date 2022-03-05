@@ -32,6 +32,7 @@ class PostTest extends AbstractUnitTest
         foreach ($posts as $post) {
             self::assertEquals($title, $post->getTitle());
             self::assertEquals($text, $post->getText());
+            self::assertCount(0, $post->getTags());
         }
     }
 
